@@ -46,5 +46,19 @@ namespace TestCabInvoiceGenerator
 
             Assert.AreEqual(expectedSummary, summary);
         }
+
+        [Test]
+        public void GivenUserIdShouldReturnInvoiceService()
+        {
+            invoiceGenerator = new InvoiceGenerator(RideType.NORMAL);
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+            invoiceGenerator.AddRides("ktr", rides);
+
+            InvoiceSummary invoiceSummary = invoiceGenerator.GetInvoiceSummary("ktr");
+            InvoiceSummary expectedSummary = new InvoiceSummary(2, 30, 15);
+
+            Assert.AreEqual(expectedSummary, invoiceSummary);
+
+        }
     }
 }
