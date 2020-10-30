@@ -58,7 +58,19 @@ namespace TestCabInvoiceGenerator
             InvoiceSummary expectedSummary = new InvoiceSummary(2, 30, 15);
 
             Assert.AreEqual(expectedSummary, invoiceSummary);
+        }
 
+        [Test]
+        public void GivenPremiumRidesReturnInvoiceService()
+        {
+            invoiceGenerator = new InvoiceGenerator(RideType.PREMIUM);
+            Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+            invoiceGenerator.AddRides("ktr", rides);
+
+            InvoiceSummary invoiceSummary = invoiceGenerator.GetInvoiceSummary("ktr");
+            InvoiceSummary expectedSummary = new InvoiceSummary(2, 60);
+
+            Assert.AreEqual(expectedSummary, invoiceSummary);
         }
     }
 }
