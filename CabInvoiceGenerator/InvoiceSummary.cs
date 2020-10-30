@@ -22,6 +22,17 @@ namespace CabInvoiceGenerator
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="numberOfRides"></param>
+        /// <param name="totalFare"></param>
+        /// <param name="averageFare"></param>
+        public InvoiceSummary(int numberOfRides, double totalFare, double averageFare) : this(numberOfRides, totalFare)
+        {
+            this.averageFare = averageFare;
+        }
+
+        /// <summary>
         /// Overriding Equals Method.
         /// </summary>
         /// <param name="obj"></param>
